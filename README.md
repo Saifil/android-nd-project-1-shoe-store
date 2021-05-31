@@ -2,6 +2,8 @@
 
 One stop solution to maintain any shoe inventory
 
+Developed as part of [Android Kotlin Developer Nanodegree Program](https://www.udacity.com/course/android-kotlin-developer-nanodegree--nd940)
+
 ### Screens
 
 #### Login
