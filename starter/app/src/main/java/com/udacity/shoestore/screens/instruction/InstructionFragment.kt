@@ -1,0 +1,59 @@
+package com.udacity.shoestore.screens.instruction
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import com.udacity.shoestore.R
+import com.udacity.shoestore.databinding.FragmentInstructionBinding
+import com.udacity.shoestore.models.User
+
+class InstructionFragment : Fragment() {
+
+    private lateinit var binding: FragmentInstructionBinding
+
+    private lateinit var viewModel: InstructionViewModel
+    private lateinit var viewModelFactory: InstructionViewModelFactory
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Set the fragment binding and return the root layout
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_instruction, container, false)
+
+        // get the user status
+        val user = getUserFromArgs()
+        viewModelFactory = InstructionViewModelFactory(user)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(InstructionViewModel::class.java)
+
+        // attach data binding to viewModel
+        binding.instructionViewModel = viewModel
+
+        // set the viewModel observers
+        setViewModelObservers()
+
+        return binding.root
+    }
+
+    private fun getUserFromArgs() : User? {
+        // fetch the user arg to check if the user is logged in
+        val args = arguments?.let { InstructionFragmentArgs.fromBundle(it) }
+        return args?.userData
+    }
+
+    private fun setViewModelObservers() = with(viewModel) {
+        shouldNavigateToShoeListScreen.observe(viewLifecycleOwner, Observer { shouldNavigate ->
+            if (shouldNavigate) {
+                findNavController().navigate(
+                    InstructionFragmentDirections.actionInstructionFragmentToShoeListFragment4(user))
+            }
+        })
+    }
+}

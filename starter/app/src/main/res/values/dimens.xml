@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- text size -->
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+
+    <!-- padding/margin -->
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_12">12dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_32">32dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_form_top">84dp</dimen>
+    <dimen name="padding_48">48dp</dimen>
+    <dimen name="padding_208">208dp</dimen>
+
+    <!-- view dimens -->
+    <dimen name="login_logo_size">96dp</dimen>
+    <dimen name="input_edit">280dp</dimen>
+    <dimen name="slides_logo_size">128dp</dimen>
+    <dimen name="how_to_logo_size">108dp</dimen>
+
+</resources>

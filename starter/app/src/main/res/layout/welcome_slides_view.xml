@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".screens.welcome.slides.WelcomeSlideScreenView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/slide_logo"
+            android:layout_width="@dimen/slides_logo_size"
+            android:layout_height="@dimen/slides_logo_size"
+            android:layout_marginTop="@dimen/padding_32"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/golden_gate" />
+
+        <TextView
+            android:id="@+id/slide_title_text"
+            style="@style/CustomText.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_208"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slide_logo"
+            tools:text="Headquartered in San Francisco" />
+
+        <TextView
+            android:id="@+id/slide_subtitle_text"
+            style="@style/CustomText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_12"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slide_title_text"
+            tools:text="Made with love by a small team of 10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

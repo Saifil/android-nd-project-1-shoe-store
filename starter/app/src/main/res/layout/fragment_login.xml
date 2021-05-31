@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".screens.login.LoginFragment">
+
+    <data>
+
+        <variable
+            name="loginInfoModel"
+            type="com.udacity.shoestore.models.LoginFormStaticInfo" />
+
+        <variable
+            name="loginViewModel"
+            type="com.udacity.shoestore.screens.login.LoginViewModel" />
+    </data>
+
+    <!--  We make a choice of simplicity to not add scrollView  -->
+    <!--  If making a scalable app for various screens, we should
+          consider adding scrolling for smaller screen          -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/shoe_logo"
+            android:layout_width="@dimen/login_logo_size"
+            android:layout_height="@dimen/login_logo_size"
+            android:layout_marginTop="@dimen/padding_form_top"
+            android:src="@drawable/shoes_icon"
+            app:layout_constraintBottom_toTopOf="@id/login_email_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/login_email_label"
+            style="@style/CustomText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_32"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawablePadding="@dimen/padding_8"
+            android:text="@{loginInfoModel.emailLabel}"
+            app:layout_constraintStart_toStartOf="@id/input_email"
+            app:layout_constraintTop_toBottomOf="@id/shoe_logo"
+            tools:text="Email" />
+
+        <EditText
+            android:id="@+id/input_email"
+            style="@style/TextInputHint"
+            android:layout_width="@dimen/input_edit"
+            android:layout_height="wrap_content"
+            android:hint="@{loginInfoModel.emailHint}"
+            android:inputType="textEmailAddress"
+            android:text="@={loginViewModel.user.email}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_email_label"
+            tools:hint="Enter you email.." />
+
+        <TextView
+            android:id="@+id/login_password_label"
+            style="@style/CustomText.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_12"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawablePadding="@dimen/padding_8"
+            android:text="@{loginInfoModel.passwordLabel}"
+            app:layout_constraintStart_toStartOf="@id/input_password"
+            app:layout_constraintTop_toBottomOf="@id/input_email"
+            tools:text="Password" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_password"
+            style="@style/TextInputHint"
+            android:layout_width="@dimen/input_edit"
+            android:layout_height="wrap_content"
+            android:hint="@{loginInfoModel.passwordHint}"
+            android:inputType="textPassword"
+            android:text="@={loginViewModel.user.password}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_password_label"
+            tools:hint="Enter your existing or new password..." />
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_16"
+            android:layout_marginEnd="@dimen/padding_4"
+            android:onClick="@{() -> loginViewModel.onPressedLogin()}"
+            android:text="@{loginInfoModel.loginButtonText}"
+            android:theme="@style/AppTheme.Button.Accent.Dark"
+            app:layout_constraintEnd_toStartOf="@id/signup_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@id/input_password"
+            app:layout_constraintTop_toBottomOf="@id/input_password"
+            tools:text="Login" />
+
+        <Button
+            android:id="@+id/signup_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_4"
+            android:onClick="@{() -> loginViewModel.onPressedSignup()}"
+            android:text="@{loginInfoModel.signUpButtonText}"
+            android:theme="@style/AppTheme.Button.Accent.Light"
+            app:layout_constraintEnd_toEndOf="@+id/input_password"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/login_btn"
+            app:layout_constraintTop_toTopOf="@+id/login_btn"
+            tools:text="Signup" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
