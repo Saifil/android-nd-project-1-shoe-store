@@ -76,7 +76,7 @@ class ShoeListFragment : Fragment() {
                 baseViewModel.clearShoeList()
                 // If not logged it, navigate to the login screen
                 findNavController().navigate(
-                    ShoeListFragmentDirections.actionShoeListFragment4ToLoginFragment2())
+                    ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
             }
         })
         baseViewModel.shoesList.observe(viewLifecycleOwner, Observer { currentShoeList ->
@@ -87,7 +87,7 @@ class ShoeListFragment : Fragment() {
         viewModel.shouldNavigateToShoeDetailScreen.observe(viewLifecycleOwner, Observer { shouldNavigate ->
             if (shouldNavigate) {
                 findNavController().navigate(
-                    ShoeListFragmentDirections.actionShoeListFragment4ToShoeDetailFragment4())
+                    ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
             }
         })
     }

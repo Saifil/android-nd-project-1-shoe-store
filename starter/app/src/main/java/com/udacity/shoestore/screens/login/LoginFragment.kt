@@ -63,7 +63,7 @@ class LoginFragment : Fragment() {
                 // store the userData in baseViewModel for maintaining the loggedIn state
                 baseViewModel.setUserData(user)
                 findNavController().navigate(
-                    LoginFragmentDirections.actionLoginFragment2ToWelcomeFragment())
+                    LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
             }
         })
     }

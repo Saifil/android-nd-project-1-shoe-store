@@ -41,7 +41,7 @@ class InstructionFragment : Fragment() {
         shouldNavigateToShoeListScreen.observe(viewLifecycleOwner, Observer { shouldNavigate ->
             if (shouldNavigate) {
                 findNavController().navigate(
-                    InstructionFragmentDirections.actionInstructionFragmentToShoeListFragment4())
+                    InstructionFragmentDirections.actionInstructionFragmentToShoeListFragment())
             }
         })
     }
