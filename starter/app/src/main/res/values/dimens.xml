@@ -28,4 +28,7 @@
     <dimen name="how_to_logo_size">108dp</dimen>
     <dimen name="image_empty_size">180dp</dimen>
 
+    <!-- anim times -->
+    <dimen name="screen_transition_time">300</dimen>
+
 </resources>
