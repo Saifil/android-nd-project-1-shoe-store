@@ -63,6 +63,11 @@ android-nd-project-1-shoe-store/starter
     * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2)
 
+## Future Work
+
+- Add image support for shoe details
+- Add paging dots for onboarding slides
+
 ## License
 
 [MIT License](LICENSE) &copy; Shoe Shack
