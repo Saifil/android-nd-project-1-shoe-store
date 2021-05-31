@@ -10,7 +10,7 @@ import com.udacity.shoestore.models.WelcomeSlide
 private const val BUTTON_NEXT = "Next"
 private const val BUTTON_CONTINUE = "Continue"
 
-class WelcomeViewModel(val user: User?) : ViewModel() {
+class WelcomeViewModel : ViewModel() {
 
     val welcomeSlidesList: LiveData<ArrayList<WelcomeSlide>>
         get() = _welcomeSlidesList

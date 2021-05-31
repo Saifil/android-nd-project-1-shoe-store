@@ -19,8 +19,6 @@ class ShoeListFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
 
-    private lateinit var viewModel: ShoeListViewModel
-    private lateinit var viewModelFactory: ShoeListViewModelFactory
     private lateinit var baseViewModel: MainViewModel
 
 
@@ -32,11 +30,6 @@ class ShoeListFragment : Fragment() {
         // Set the fragment binding and return the root layout
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false)
-
-        val user = getUserFromArgs()
-        // delegate user login state check to viewModel
-        viewModelFactory = ShoeListViewModelFactory(user)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ShoeListViewModel::class.java)
 
         // fetch the base viewModel from ActivityMain
         baseViewModel = ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java)
@@ -58,7 +51,7 @@ class ShoeListFragment : Fragment() {
         toolbarLogout.setOnMenuItemClickListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.menu_logout_item -> {
-                    viewModel.notifyUserLoggedOut()
+                    baseViewModel.notifyUserLoggedOut()
                     true
                 }
                 else -> false
@@ -66,17 +59,12 @@ class ShoeListFragment : Fragment() {
         }
     }
 
-    private fun getUserFromArgs(): User? {
-        // fetch the user arg to check if the user is logged in
-        val args = arguments?.let { ShoeListFragmentArgs.fromBundle(it) }
-        return args?.userData
-    }
-
     private fun setViewModelObservers() {
-        viewModel.isUserLoggedIn.observe(viewLifecycleOwner, Observer { isLoggedIn ->
+        baseViewModel.isUserLoggedIn.observe(viewLifecycleOwner, Observer { isLoggedIn ->
             if (!isLoggedIn) {
                 // If not logged it, navigate to the login screen
-                findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragment4ToLoginFragment2())
+                findNavController().navigate(
+                    ShoeListFragmentDirections.actionShoeListFragment4ToLoginFragment2())
             }
         })
         baseViewModel.shoesList.observe(viewLifecycleOwner, Observer { currentShoeList ->

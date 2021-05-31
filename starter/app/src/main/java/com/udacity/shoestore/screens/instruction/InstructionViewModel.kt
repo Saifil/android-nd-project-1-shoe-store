@@ -3,9 +3,8 @@ package com.udacity.shoestore.screens.instruction
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.udacity.shoestore.models.User
 
-class InstructionViewModel(val user: User?) : ViewModel() {
+class InstructionViewModel : ViewModel() {
     val title = "Instructions on how to use..."
     val subtitle = "You can scroll through and view all the shoes listing" +
         " on the next page. You can also add a new shoe inventory by clicking the" +

@@ -18,7 +18,6 @@ class InstructionFragment : Fragment() {
     private lateinit var binding: FragmentInstructionBinding
 
     private lateinit var viewModel: InstructionViewModel
-    private lateinit var viewModelFactory: InstructionViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,10 +27,7 @@ class InstructionFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_instruction, container, false)
 
-        // get the user status
-        val user = getUserFromArgs()
-        viewModelFactory = InstructionViewModelFactory(user)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(InstructionViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(InstructionViewModel::class.java)
 
         // attach data binding to viewModel
         binding.instructionViewModel = viewModel
@@ -42,17 +38,11 @@ class InstructionFragment : Fragment() {
         return binding.root
     }
 
-    private fun getUserFromArgs() : User? {
-        // fetch the user arg to check if the user is logged in
-        val args = arguments?.let { InstructionFragmentArgs.fromBundle(it) }
-        return args?.userData
-    }
-
     private fun setViewModelObservers() = with(viewModel) {
         shouldNavigateToShoeListScreen.observe(viewLifecycleOwner, Observer { shouldNavigate ->
             if (shouldNavigate) {
                 findNavController().navigate(
-                    InstructionFragmentDirections.actionInstructionFragmentToShoeListFragment4(user))
+                    InstructionFragmentDirections.actionInstructionFragmentToShoeListFragment4())
             }
         })
     }

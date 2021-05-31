@@ -19,7 +19,6 @@ class WelcomeFragment : Fragment() {
     private lateinit var binding: FragmentWelcomeBinding
 
     private lateinit var viewModel: WelcomeViewModel
-    private lateinit var viewModelFactory: WelcomeViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,10 +30,7 @@ class WelcomeFragment : Fragment() {
             inflater, R.layout.fragment_welcome, container, false)
 
 
-        // get the user status
-        val user = getUserFromArgs()
-        viewModelFactory = WelcomeViewModelFactory(user)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(WelcomeViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(WelcomeViewModel::class.java)
 
         // attach data binding to viewModel
         binding.welcomeViewModel = viewModel
@@ -49,12 +45,6 @@ class WelcomeFragment : Fragment() {
         setViewModelObservers()
 
         return binding.root
-    }
-
-    private fun getUserFromArgs() : User? {
-        // fetch the user arg to check if the user is logged in
-        val args = arguments?.let { WelcomeFragmentArgs.fromBundle(it) }
-        return args?.userData
     }
 
     private fun setupWelcomeSlides() = with(binding) {
@@ -79,7 +69,7 @@ class WelcomeFragment : Fragment() {
         shouldNavigateToInfoScreen.observe(viewLifecycleOwner, Observer { shouldNavigate ->
             if (shouldNavigate) {
                 findNavController().navigate(
-                    WelcomeFragmentDirections.actionWelcomeFragmentToInstructionFragment(user))
+                    WelcomeFragmentDirections.actionWelcomeFragmentToInstructionFragment())
             }
         })
     }

@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.udacity.shoestore.MainViewModel
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 import com.udacity.shoestore.models.LoginFormStaticInfo
@@ -21,6 +22,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
+    private lateinit var baseViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,7 @@ class LoginFragment : Fragment() {
             R.layout.fragment_login, container, false)
 
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        baseViewModel = ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java)
 
         // attach models to data binding
         binding.apply {
@@ -57,8 +60,10 @@ class LoginFragment : Fragment() {
         hasSuccessfullyLoggedIn.observe(viewLifecycleOwner, Observer { hasLoggedIn ->
             if (hasLoggedIn) {
                 this@LoginFragment.hideKeyboard()
+                // store the userData in baseViewModel for maintaining the loggedIn state
+                baseViewModel.setUserData(user)
                 findNavController().navigate(
-                    LoginFragmentDirections.actionLoginFragment2ToWelcomeFragment(user))
+                    LoginFragmentDirections.actionLoginFragment2ToWelcomeFragment())
             }
         })
     }
