@@ -41,6 +41,9 @@ class ShoeListFragment : Fragment() {
         // set the viewModel observers
         setViewModelObservers()
 
+        // if no shoes to show, show the empty view
+        baseViewModel.shoesList.value?.let { handleEmptyViewState(it) }
+
         // set the logout menu
         setupToolbar()
 
@@ -52,6 +55,7 @@ class ShoeListFragment : Fragment() {
     // Toolbar for per-fragment based appbar
     private fun setupToolbar() = with(binding) {
         toolbarLogout.inflateMenu(R.menu.logout_menu)
+        toolbarLogout.title = getString(R.string.shoe_list)
         toolbarLogout.setOnMenuItemClickListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.menu_logout_item -> {
@@ -77,7 +81,6 @@ class ShoeListFragment : Fragment() {
         })
         baseViewModel.shoesList.observe(viewLifecycleOwner, Observer { currentShoeList ->
             resetShoeListContainer(currentShoeList)
-            handleEmptyViewState(currentShoeList)
         })
 
         // listen to navigation event
@@ -100,9 +103,9 @@ class ShoeListFragment : Fragment() {
         }
     }
 
-    private fun <T: Any> handleEmptyViewState(currentShoeList: ArrayList<T>) {
+    private fun <T: Any> handleEmptyViewState(currentList: ArrayList<T>) = with(binding) {
         // show the emptyView if necessary
-        binding.emptyViewImage.visibleIf(currentShoeList.isNullOrEmpty())
-        binding.emptyViewText.visibleIf(currentShoeList.isNullOrEmpty())
+        emptyViewImage.visibleIf(currentList.isNullOrEmpty())
+        emptyViewText.visibleIf(currentList.isNullOrEmpty())
     }
 }

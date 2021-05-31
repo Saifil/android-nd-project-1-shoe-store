@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">ShoeStore</string>
+    <string name="app_name">Shoe Shack</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logout">Logout</string>
     <string name="such_empty">Wow, such empty</string>
     <string name="empty_view_image">EmptyViewImage</string>
+    <string name="shoe_list">Shoe List</string>
+    <string name="add_shoe">Add Shoe</string>
 </resources>

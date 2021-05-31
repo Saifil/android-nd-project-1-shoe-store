@@ -33,7 +33,6 @@ class MainViewModel : ViewModel() {
     fun setUserData(user: User? = null) {
         _user.value = user
         _isUserLoggedIn.value = _user.value != null
-        _isUserLoggedIn.value = true
     }
 
     fun clearShoeList() {

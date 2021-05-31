@@ -44,7 +44,20 @@ class ShoeDetailFragment : Fragment() {
         // set the viewModel observers
         setViewModelObservers()
 
+        // set the logout menu
+        setupToolbar()
+
         return binding.root
+    }
+
+    // Toolbar for per-fragment based appbar
+    private fun setupToolbar() = with(binding) {
+        toolbarLogout.title = getString(R.string.add_shoe)
+        toolbarLogout.setNavigationIcon(R.drawable.baseline_arrow_back_24)
+        toolbarLogout.setNavigationOnClickListener {
+            // navigate back to ShoeList
+            findNavController().navigateUp()
+        }
     }
 
     private fun setViewModelObservers() = with(viewModel) {
@@ -55,15 +68,22 @@ class ShoeDetailFragment : Fragment() {
             }
         })
 
+        // if user has added a new show, reflect the same in baseViewModel and navigate back
         hasAddedShoeDetail.observe(viewLifecycleOwner, Observer { hasAddedShoe ->
             if (hasAddedShoe) {
                 // add the shoe to baseViewModel shoeList
                 baseViewModel.addNewShoe(shoe)
                 // hide keyboard
-                this@ShoeDetailFragment.hideKeyboard()
+                hideKeyboard()
                 // navigate back to ShoeList
-                findNavController().navigate(
-                    ShoeDetailFragmentDirections.actionShoeDetailFragment4ToShoeListFragment4())
+                findNavController().navigateUp()
+            }
+        })
+
+        hasIntentNavigateUp.observe(viewLifecycleOwner, Observer { shouldNavigateUp ->
+            if (shouldNavigateUp) {
+                // navigate back to ShoeList
+                findNavController().navigateUp()
             }
         })
     }

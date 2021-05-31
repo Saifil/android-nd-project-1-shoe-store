@@ -13,10 +13,14 @@ class ShoeDetailViewModel : ViewModel() {
         get() = _inValidInputMessage
     val hasAddedShoeDetail: LiveData<Boolean>
         get() = _hasAddedShoeDetail
+    // see if user has actioned to navigate back to shoeList page
+    val hasIntentNavigateUp: LiveData<Boolean>
+        get() = _hasIntentNavigateUp
 
     /** Internal usage only **/
     private val _inValidInputMessage = MutableLiveData<String>()
     private val _hasAddedShoeDetail = MutableLiveData<Boolean>()
+    private val _hasIntentNavigateUp = MutableLiveData<Boolean>()
 
     // populated directly from the layout using 2-way data binding
     // downside: can be modified from outside the viewModel
@@ -25,6 +29,7 @@ class ShoeDetailViewModel : ViewModel() {
     init {
         _inValidInputMessage.value = ""
         _hasAddedShoeDetail.value = false
+        _hasIntentNavigateUp.value = false
     }
 
     fun onClickedSave() = if (isValidShoeInput()) {
@@ -33,6 +38,11 @@ class ShoeDetailViewModel : ViewModel() {
     } else {
         // reset the invalid input message
         onInvalidMessageShown()
+    }
+
+    fun onClickedCancel() {
+        _hasIntentNavigateUp.value = true
+        onNavigatedUp()
     }
 
     /** internal helper functions**/
@@ -65,5 +75,9 @@ class ShoeDetailViewModel : ViewModel() {
 
     private fun onShoeDetailAdded() {
         _hasAddedShoeDetail.value = false
+    }
+
+    private fun onNavigatedUp() {
+        _hasIntentNavigateUp.value = false
     }
 }
