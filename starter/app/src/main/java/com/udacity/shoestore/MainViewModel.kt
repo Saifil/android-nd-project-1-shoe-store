@@ -38,6 +38,7 @@ class MainViewModel : ViewModel() {
     fun clearShoeList() {
         resetShoeList()
     }
+
     fun addNewShoe(shoe: Shoe) = _shoesList.value?.add(shoe)
 
     /** internal helper functions**/

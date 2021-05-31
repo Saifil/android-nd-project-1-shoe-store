@@ -15,6 +15,9 @@
             type="com.udacity.shoestore.models.ShoeDetailFormStaticInfo" />
     </data>
 
+    <!-- Here we resort to RelativeLayout because we want to children to
+         the main layout, toolbar & scrollView. If the scrollView was
+         omitted, we could have used the ConstraintLayout in itself -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

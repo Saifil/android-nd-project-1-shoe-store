@@ -59,7 +59,7 @@ class LoginFragment : Fragment() {
         // user has logged in successfully, thus, redirect them to welcome screen
         hasSuccessfullyLoggedIn.observe(viewLifecycleOwner, Observer { hasLoggedIn ->
             if (hasLoggedIn) {
-                this@LoginFragment.hideKeyboard()
+                hideKeyboard()
                 // store the userData in baseViewModel for maintaining the loggedIn state
                 baseViewModel.setUserData(user)
                 findNavController().navigate(

@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentWelcomeBinding
-import com.udacity.shoestore.models.User
 import com.udacity.shoestore.screens.welcome.slides.WelcomeSlidePagerAdapter
 
 class WelcomeFragment : Fragment() {

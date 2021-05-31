@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         Timber.plant(Timber.DebugTree())
 
         // hook up this base view model which will handle the global states
-        // TODO: move login state management to MainViewModel
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 }

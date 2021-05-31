@@ -11,6 +11,8 @@
             type="com.udacity.shoestore.screens.instruction.InstructionViewModel" />
     </data>
 
+    <!-- Simple layout was suitable for ConstraintLayout
+         No need to add extra complexity w/ LinearLayout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

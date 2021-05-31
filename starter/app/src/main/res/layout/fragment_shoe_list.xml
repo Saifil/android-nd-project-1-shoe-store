@@ -11,6 +11,9 @@
             type="com.udacity.shoestore.screens.shoelist.ShoeListViewModel" />
     </data>
 
+    <!-- Here we use RelativeLayout for ease of developing.
+         It allows us to nicely align FAB, toolbar, emptyList View
+         and the scrollView w/ Linear Layout -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,6 +28,9 @@
             android:minHeight="?attr/actionBarSize"
             app:titleTextColor="@color/text_white" />
 
+        <!-- Start of empty list view -->
+        <!-- We add an image w/ subtitle to denote empty view
+             and provide a better UX -->
         <ImageView
             android:id="@+id/empty_view_image"
             android:layout_width="@dimen/image_empty_size"
@@ -44,6 +50,7 @@
             android:layout_marginTop="@dimen/padding_12"
             android:text="@string/such_empty"
             android:visibility="gone" />
+        <!-- End of empty list view -->
 
         <ScrollView
             android:id="@+id/shoe_list_scrollView"

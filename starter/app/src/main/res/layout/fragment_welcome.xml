@@ -11,6 +11,8 @@
             type="com.udacity.shoestore.screens.welcome.WelcomeViewModel" />
     </data>
 
+    <!-- Simple layout was suitable for ConstraintLayout
+         No need to add extra complexity w/ LinearLayout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,6 +30,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Welcome to Shoe Shack" />
 
+        <!-- ViewPager2 to show the onboarding slides -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/slide_view_pager"
             android:layout_width="match_parent"

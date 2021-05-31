@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.welcome.slides.WelcomeSlideScreenView">
 
+    <!-- Simple layout was suitable for ConstraintLayout
+         No need to add extra complexity w/ LinearLayout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -10,6 +10,10 @@ import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.WelcomeSlidesViewBinding
 import com.udacity.shoestore.models.WelcomeSlide
 
+/**
+ * Simple class that returns a Fragment to be loaded inside ViewPager2
+ * Encloses the logic for individual slides seen in the [WelcomeFragment]
+ */
 class WelcomeSlideScreenView(
     private val welcomeSlide: WelcomeSlide
 ) : Fragment() {

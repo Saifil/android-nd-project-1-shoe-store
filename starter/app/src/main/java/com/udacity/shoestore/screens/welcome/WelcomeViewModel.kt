@@ -3,9 +3,8 @@ package com.udacity.shoestore.screens.welcome
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.udacity.shoestore.R
-import com.udacity.shoestore.models.User
 import com.udacity.shoestore.models.WelcomeSlide
+import com.udacity.shoestore.models.getDefaultSlides
 
 private const val BUTTON_NEXT = "Next"
 private const val BUTTON_CONTINUE = "Continue"
@@ -35,23 +34,7 @@ class WelcomeViewModel : ViewModel() {
     }
 
     private fun setupStaticWelcomeSlides() {
-        _welcomeSlidesList.value = arrayListOf(
-            WelcomeSlide(
-                imageResId = R.drawable.golden_gate,
-                title = "Headquartered in San Francisco",
-                subtitle = "Made with love by a small team of 5"
-            ),
-            WelcomeSlide(
-                imageResId = R.drawable.global,
-                title = "Serving 10+ countries",
-                subtitle = "Experience a global taste in shoes"
-            ),
-            WelcomeSlide(
-                imageResId = R.drawable.customer_review,
-                title = "Rated 4.8 on Google Play",
-                subtitle = "Over 100,000+ reviews in 3 months"
-            )
-        )
+        _welcomeSlidesList.value = getDefaultSlides()
     }
 
     fun onSlideNextClicked() = if (hasNoMoreSlides()) {
