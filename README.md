@@ -40,11 +40,11 @@ open .
 
 ### Installation
 
-- Install Android Studio (version >= 3.6.1)
-- Open `starter` project in Android Studio
+- Install Android Studio (<b>version >= 3.6.1</b>)
+- Open [`starter`](https://github.com/Saifil/android-nd-project-1-shoe-store/tree/master/starter) project in Android Studio
 - The app will take a while when building gradle for the very first time
 - Run the project to install app on physical android device / emulator
-    - Min supported android version is API 22
+    - Min supported android version is <b>API 22</b>
 
 ## Project Instructions
 
