@@ -39,7 +39,7 @@
             app:layout_constraintHorizontal_weight="2"
             app:layout_constraintStart_toEndOf="@+id/shoe_name"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="US 8" />
+            tools:text="US 8.5" />
 
         <TextView
             android:id="@+id/shoe_company"

@@ -20,12 +20,14 @@
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment4"
-        android:name="com.udacity.shoestore.screens.ShoeDetailFragment"
+        android:name="com.udacity.shoestore.screens.shoedetail.ShoeDetailFragment"
         android:label="fragment_shoe_detail"
         tools:layout="@layout/fragment_shoe_detail" >
         <action
             android:id="@+id/action_shoeDetailFragment4_to_shoeListFragment4"
-            app:destination="@id/shoeListFragment4" />
+            app:destination="@id/shoeListFragment4"
+            app:popUpTo="@id/shoeListFragment4"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment2"

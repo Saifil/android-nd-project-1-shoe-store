@@ -13,14 +13,14 @@ import com.udacity.shoestore.MainViewModel
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.Shoe
-import com.udacity.shoestore.models.User
+import com.udacity.shoestore.utils.visibleIf
 
 class ShoeListFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
 
+    private lateinit var viewModel: ShoeListViewModel
     private lateinit var baseViewModel: MainViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,8 +31,12 @@ class ShoeListFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false)
 
+        viewModel = ViewModelProviders.of(this).get(ShoeListViewModel::class.java)
         // fetch the base viewModel from ActivityMain
         baseViewModel = ViewModelProviders.of(requireActivity()).get(MainViewModel::class.java)
+
+        // attach data binding to viewModel
+        binding.shoeListViewModel = viewModel
 
         // set the viewModel observers
         setViewModelObservers()
@@ -62,6 +66,10 @@ class ShoeListFragment : Fragment() {
     private fun setViewModelObservers() {
         baseViewModel.isUserLoggedIn.observe(viewLifecycleOwner, Observer { isLoggedIn ->
             if (!isLoggedIn) {
+                // clear the shoe list
+                // here, the ideal behavior would be to save the shoeList if user is an existing
+                // user, but as we do not keep a persistent state, we will clear the list for simplicity
+                baseViewModel.clearShoeList()
                 // If not logged it, navigate to the login screen
                 findNavController().navigate(
                     ShoeListFragmentDirections.actionShoeListFragment4ToLoginFragment2())
@@ -69,6 +77,15 @@ class ShoeListFragment : Fragment() {
         })
         baseViewModel.shoesList.observe(viewLifecycleOwner, Observer { currentShoeList ->
             resetShoeListContainer(currentShoeList)
+            handleEmptyViewState(currentShoeList)
+        })
+
+        // listen to navigation event
+        viewModel.shouldNavigateToShoeDetailScreen.observe(viewLifecycleOwner, Observer { shouldNavigate ->
+            if (shouldNavigate) {
+                findNavController().navigate(
+                    ShoeListFragmentDirections.actionShoeListFragment4ToShoeDetailFragment4())
+            }
         })
     }
 
@@ -81,5 +98,11 @@ class ShoeListFragment : Fragment() {
                 ShoeItemView(requireContext()).apply { setup(shoe) }
             )
         }
+    }
+
+    private fun <T: Any> handleEmptyViewState(currentShoeList: ArrayList<T>) {
+        // show the emptyView if necessary
+        binding.emptyViewImage.visibleIf(currentShoeList.isNullOrEmpty())
+        binding.emptyViewText.visibleIf(currentShoeList.isNullOrEmpty())
     }
 }

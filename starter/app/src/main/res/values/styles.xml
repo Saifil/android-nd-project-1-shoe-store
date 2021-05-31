@@ -60,6 +60,11 @@
         <item name="colorButtonNormal">@color/colorAccentLight</item>
     </style>
 
-    <dimen name="text_size_26">26sp</dimen>
-    <dimen name="text_size_32">32sp</dimen>
+    <style name="AppTheme.Button.Large" parent="AppTheme.Button.Accent">
+        <item name="android:textSize">@dimen/text_size_24</item>
+    </style>
+
+    <style name="AppTheme.Button.SaveGreen" parent="AppTheme.Button.Large">
+        <item name="colorButtonNormal">@color/save_green</item>
+    </style>
 </resources>

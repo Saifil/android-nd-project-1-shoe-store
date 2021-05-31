@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.shoelist.ShoeListFragment">
 
+    <data>
+
+        <variable
+            name="shoeListViewModel"
+            type="com.udacity.shoestore.screens.shoelist.ShoeListViewModel" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +25,28 @@
             android:minHeight="?attr/actionBarSize"
             app:titleTextColor="@color/text_white" />
 
+        <ImageView
+            android:id="@+id/empty_view_image"
+            android:layout_width="@dimen/image_empty_size"
+            android:layout_height="@dimen/image_empty_size"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/empty_view_image"
+            android:src="@drawable/doge_wow"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/empty_view_text"
+            style="@style/CustomText.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/empty_view_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/padding_12"
+            android:text="@string/such_empty"
+            android:visibility="gone" />
+
         <ScrollView
+            android:id="@+id/shoe_list_scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar_logout"
@@ -42,7 +70,8 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="end|bottom"
             android:layout_margin="@dimen/padding_32"
-            android:src="@drawable/ic_add"
+            android:onClick="@{() -> shoeListViewModel.onFabNavButtonClicked()}"
+            android:src="@drawable/outline_add_24"
             android:tint="@color/colorPrimary" />
 
     </RelativeLayout>
