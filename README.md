@@ -2,7 +2,32 @@
 
 One stop solution to maintain any shoe inventory
 
-#### TODO: add screenshots
+### Screens
+
+#### Login
+| Login      | Login Error |
+| ----------- | ----------- |
+|<img src="screenshots/login.png" width="320">|<img src="screenshots/login_invalid.png" width="320">|
+
+#### Onboarding
+| Welcome Slide 1 | Welcome Slide 2 | Welcome Slide 3 |
+| ----------- | ----------- | ----------- |
+|<img src="screenshots/welcome_screen_1.png">|<img src="screenshots/welcome_screen_2.png">|<img src="screenshots/welcome_screen_3.png">|
+
+#### Insctruction
+| How to      |
+| ----------- |
+|<img src="screenshots/info.png" width="320">|
+
+#### Shoe List
+| Empty      | With Shoes |
+| ----------- | ----------- |
+|<img src="screenshots/shoe_list_empty.png" width="320">|<img src="screenshots/shoe_list.png" width="320">|
+
+#### Insctruction
+| Shoe Detail Form |
+| ----------- |
+|<img src="screenshots/shoe_add.png" width="320">|
 
 ## Getting Started
 
@@ -40,4 +65,4 @@ android-nd-project-1-shoe-store/starter
 
 ## License
 
-[MIT License] &copy; Shoe Shack
+[MIT License](LICENSE) &copy; Shoe Shack
